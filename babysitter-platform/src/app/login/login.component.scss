@@ -1,0 +1,23 @@
+
+.wrapper{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.login-card{
+    width:400px;
+}
+
+#loginForm ::ng-deep .mat-form-field{
+    display: block !important;
+    padding: 8px 15px;
+}
+
+::ng-deep .mat-card-actions{
+    padding: 0px 22px !important;
+    margin-bottom: 0px !important;
+}
+
+
