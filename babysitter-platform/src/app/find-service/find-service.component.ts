@@ -43,7 +43,8 @@ export class FindServiceComponent implements OnInit {
           "lastName": "Hansen",
           "gender": "female",
           "birthDate": new Date,
-          "education": "High School degree"
+          "education": "High School degree",
+          "picture": "https://images.pexels.com/photos/755049/pexels-photo-755049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
         },
         "details": "I love children",
         "location": "Hellerup",
@@ -61,7 +62,8 @@ export class FindServiceComponent implements OnInit {
           "lastName": "Hansen",
           "gender": "male",
           "birthDate": new Date,
-          "education": "Web development at KEA"
+          "education": "Web development at KEA",
+          "picture": "https://images.pexels.com/photos/1121796/pexels-photo-1121796.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
         },
         // "parent": {
         //   "id": "123",
