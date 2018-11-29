@@ -12,20 +12,24 @@ export class UsersService {
 
   private baseUrl = 'http://angular2api2.azurewebsites.net/api/internships/'
 
-  public getSitters(){
+  public getUsers(){
     return this.http.get(this.baseUrl);
   }
 
-  public addSitter(sitter:any){
-    sitter.filter = 'andrea';
-    return this.http.post(this.baseUrl, sitter, {responseType: 'text'});
+  public getUser(userId: string){
+    return this.http.get(this.baseUrl + userId);
   }
 
-  public updateSitter(sitter){
-    return this.http.put(this.baseUrl + sitter._id, sitter, {responseType: 'text'});
+  public addUser(user:any){
+    user.filter = 'andrea';
+    return this.http.post(this.baseUrl, user, {responseType: 'text'});
   }
 
-  public deleteSitter(sitterId: string){
-    return this.http.delete(this.baseUrl + sitterId);
+  public updateUser(user){
+    return this.http.put(this.baseUrl + user._id, user, {responseType: 'text'});
+  }
+
+  public deleteUser(userId: string){
+    return this.http.delete(this.baseUrl + userId);
   }
 }

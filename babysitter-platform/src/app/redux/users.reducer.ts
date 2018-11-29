@@ -3,18 +3,21 @@ import { SittersState } from './store';
 import { tassign } from 'tassign';
 import { User } from '../entities/user';
 
-const INITIAL_STATE: SittersState = { users: []};
+const INITIAL_STATE: SittersState = { users: [], errorMessage:'', loading: false};
 
 export function UsersReducer(state: SittersState = INITIAL_STATE, action:any) {
  switch (action.type) {
 
+    case UsersActions.START_SPINNER:
+        //start the spinner
+        return tassign(state, { loading: true});
+        
+    case UsersActions.FAILURE:
+        return tassign(state, { errorMessage: action.payload, loading: false});
+
     case UsersActions.CREATE_USER:
         const newArray= [... state.users, action.payload]; 
-        return tassign(state, { users: newArray });
-
-    case UsersActions.CREATE_USER_SUCCESS:
-    
-    case UsersActions.CREATE_USER_FAILURE:
+        return tassign(state, { users: newArray, loading: false });
 
     case UsersActions.GET_USERS:
         return tassign(state, { users: action.payload });

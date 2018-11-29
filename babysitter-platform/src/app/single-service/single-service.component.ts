@@ -11,6 +11,7 @@ export class SingleServiceComponent implements OnInit {
 
   serviceId: string;
   service: Service;
+  type: string = 'sitter';
 
   constructor(
     private route: ActivatedRoute,

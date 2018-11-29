@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../redux/store';
+import { UsersActions } from '../redux/users.actions';
+import { User } from '../entities/user';
 
 @Component({
   selector: 'app-signup',
@@ -9,12 +13,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
 
   registerForm: FormGroup;
+  loading: boolean;
 
   constructor(
-    private fb: FormBuilder
+    private ngRedux: NgRedux<IAppState>,
+    private fb: FormBuilder,
+    private usersActions: UsersActions,
   ) { }
 
   ngOnInit() {
+
+    this.ngRedux.select(response =>response.users).subscribe( (data) =>{
+      this.loading = data.loading
+    })
 
     var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.registerForm = this.fb.group({
@@ -32,7 +43,8 @@ export class SignupComponent implements OnInit {
 
   public onSubmitRegister(){
     if(this.registerForm.valid){
-      
+      let user = this.registerForm.value as User;
+      this.usersActions.createUser(user);
     }
   }
 
