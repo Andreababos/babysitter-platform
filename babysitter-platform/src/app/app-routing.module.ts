@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'find-service', component: FindServiceComponent},
-  {path: 'single-service/:id', component: SingleServiceComponent},
+  {path: 'service/:id', component: SingleServiceComponent},
   {path: 'profile/:id', component: UserProfileComponent}
 ];
 

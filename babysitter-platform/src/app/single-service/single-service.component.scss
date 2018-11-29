@@ -1,12 +1,23 @@
-::ng-deep .mat-card {
-    font-family: 'Raleway' !important;
-}
-.education{
-    color: rgba(63, 81, 181, 0.8)
+.service-info{
+    .image-container{
+        max-width: 200px;
+        max-height: 200px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        img{
+            display: inline;
+            margin: 0 auto;
+            margin-left: -50%; //centers the image
+            height: 100%;
+            width: auto;
+        }
+    }
 }
 
-.mat-card-actions button{
-    width: 46%;
-    margin: 0 0 0 3% !important;
-
+.boxed{
+    background-color: white;
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    border-radius:4px;
+    padding: 10px;
 }

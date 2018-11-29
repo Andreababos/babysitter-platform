@@ -14,7 +14,8 @@ import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AuthenticationService } from './services/authentication.service';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BookingComponent } from './booking/booking.component';
 
 const matModules = [ MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule ];
 
@@ -25,7 +26,8 @@ const matModules = [ MatAutocompleteModule, MatButtonModule, MatButtonToggleModu
     SignupComponent,
     FindServiceComponent,
     SingleServiceComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ const matModules = [ MatAutocompleteModule, MatButtonModule, MatButtonToggleModu
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ...matModules,
     NgReduxModule,  
     NgReduxRouterModule.forRoot(),
@@ -40,7 +43,7 @@ const matModules = [ MatAutocompleteModule, MatButtonModule, MatButtonToggleModu
   exports: [
     ...matModules
   ],
-  providers: [AuthenticationService, HttpClient, HttpHandler],
+  providers: [AuthenticationService, HttpClient],
   bootstrap: [AppComponent]
 })
 

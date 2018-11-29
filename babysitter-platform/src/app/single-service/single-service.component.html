@@ -1,4 +1,4 @@
-<mat-card class="example-card">
+<!-- <mat-card class="example-card">
   <img mat-card-image src="{{service.sitter.picture}}" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <p class="education" *ngIf="service.sitter.education">{{service.sitter.education}}</p>
@@ -10,4 +10,30 @@
     <button mat-raised-button>MORE INFO</button>
     <button mat-raised-button color="primary">BOOK</button>
   </mat-card-actions>
-</mat-card>
+</mat-card> -->
+
+<div class="container">
+  <h1>More information about {{service.sitter.firstName}} {{service.sitter.lastName}}</h1>
+
+  <div class="service-wrapper row">
+    <div class="col-md-8">
+        <div class="marginLR10">
+          <div class="service-info boxed row">
+            <div class="image-container col-md-4">
+              <img src="{{service.sitter.picture}}">
+            </div>
+            <div class="info-container col-md-8">
+              <p class="mat-card-title name"> {{service.sitter.firstName}} {{service.sitter.lastName}}</p>
+              <p class="education"> {{service.sitter.education}}</p>
+              <p class=""> {{service.sitter.bio}}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="service-booking boxed col-md-4">
+        <div class="marginLR10">
+          <app-booking></app-booking>
+        </div>
+    </div>
+  </div>
+</div>

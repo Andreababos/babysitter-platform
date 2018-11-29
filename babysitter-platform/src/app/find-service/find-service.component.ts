@@ -20,7 +20,7 @@ export class FindServiceComponent implements OnInit {
     if(this.authService.getUserData().role == 'parent'){
       this.lookingFor = 'sitter';
     } else if (this.authService.getUserData().role == 'sitter'){
-      this.lookingFor = 'parent';
+      this.lookingFor = 'job';
     }
 
     this.getServices();
@@ -46,6 +46,22 @@ export class FindServiceComponent implements OnInit {
           "education": "High School degree",
           "picture": "https://images.pexels.com/photos/755049/pexels-photo-755049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
         },
+        "parent": {
+          "id": "123",
+          "role": "parent",
+          "email": "alisa@a.as",
+          "firstName": "Alisa",
+          "lastName": "Mortensen",
+          "gender": "female",
+          "birthDate": new Date
+        },
+        "baby": {
+          "id": "123134124",
+          "name": "Hannah",
+          "birthDate": new Date,
+          "gender": "female",
+          "picture": "https://images.pexels.com/photos/1296145/pexels-photo-1296145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        },
         "details": "I love children",
         "location": "Hellerup",
         "completed": false
@@ -65,21 +81,21 @@ export class FindServiceComponent implements OnInit {
           "education": "Web development at KEA",
           "picture": "https://images.pexels.com/photos/1121796/pexels-photo-1121796.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
         },
-        // "parent": {
-        //   "id": "123",
-        //   "role": "parent",
-        //   "email": "alisa@a.as",
-        //   "firstName": "Alisa",
-        //   "lastName": "Mortensen",
-        //   "gender": "female",
-        //   "birthDate": new Date
-        // },
-        // "baby": {
-        //   "id": "123134124",
-        //   "name": "Ubbe",
-        //   "birthDate": new Date,
-        //   "gender": "male"
-        // },
+        "parent": {
+          "id": "123",
+          "role": "parent",
+          "email": "alisa@a.as",
+          "firstName": "Alisa",
+          "lastName": "Mortensen",
+          "gender": "female",
+          "birthDate": new Date
+        },
+        "baby": {
+          "id": "123134124",
+          "name": "Ubbe",
+          "birthDate": new Date,
+          "gender": "male"
+        },
         "details": "asd",
         "location": "Copenhagen",
         "completed": false

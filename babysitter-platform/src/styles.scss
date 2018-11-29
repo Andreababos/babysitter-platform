@@ -14,3 +14,20 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     color: #3f51b5;
 }
+
+::ng-deep .mat-card {
+    font-family: 'Raleway' !important;
+}
+.education{
+    color: rgba(63, 81, 181, 0.8)
+}
+
+.mat-card-actions button{
+    width: 46%;
+    margin: 0 0 0 3% !important;
+
+}
+
+.marginLR10{
+    margin: 0 10px;
+}
