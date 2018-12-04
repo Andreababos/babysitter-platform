@@ -1,33 +1,19 @@
 <div class="container">
   <h1>Find a {{lookingFor}}</h1>
 
-  <div class="service-wrapper" *ngFor="let service of services">
+  <div class="service-wrapper" *ngFor="let sitter of sitters">
     <mat-card *ngIf="lookingFor == 'sitter'" class="example-card">
-        <img mat-card-image src="{{service.sitter.picture}}" alt="Photo of a Shiba Inu">
+        <img mat-card-image src="{{sitter.picture}}" alt="Photo of a Shiba Inu">
         <mat-card-content>
-          <p class="education" *ngIf="service.sitter.education">{{service.sitter.education}}</p>
-          <mat-card-title>{{service.sitter.firstName}} {{service.sitter.lastName}}</mat-card-title>
-          <mat-card-subtitle>{{service.price}} DKK per hour</mat-card-subtitle>
-          <p *ngIf="service.sitter.rating">{{service.sitter.rating}}</p>
+          <p class="education" *ngIf="sitter.education">{{sitter.education}}</p>
+          <mat-card-title>{{sitter.firstName}} {{sitter.lastName}}</mat-card-title>
+          <mat-card-subtitle>{{sitter.price}} DKK per hour</mat-card-subtitle>
+          <p *ngIf="sitter.rating">{{sitter.rating}}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button routerLink="./../service/{{service.id}}">MORE INFO</button>
+          <button mat-raised-button routerLink="./../service/{{sitter._id}}">MORE INFO</button>
           <button mat-raised-button color="primary">BOOK</button>
         </mat-card-actions>
       </mat-card>
-
-      <mat-card *ngIf="lookingFor == 'job'" class="example-card">
-          <img *ngIf="service.baby.picture" mat-card-image src="{{service.baby.picture}}" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p class="education" *ngIf="service.location">{{service.location}}</p>
-            <mat-card-title>{{service.baby.name}}</mat-card-title>
-            <mat-card-subtitle>{{service.price}} DKK per hour</mat-card-subtitle>
-            <p *ngIf="service.baby.rating">{{service.baby.rating}}</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button routerLink="./../service/{{service.id}}">MORE INFO</button>
-            <button mat-raised-button color="primary">BOOK</button>
-          </mat-card-actions>
-        </mat-card>
   </div>
 </div>

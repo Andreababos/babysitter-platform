@@ -3,7 +3,17 @@ import { SittersState } from './store';
 import { tassign } from 'tassign';
 import { User } from '../entities/user';
 
-const INITIAL_STATE: SittersState = { users: [], errorMessage:'', loading: false};
+const INITIAL_STATE: SittersState = { 
+    users: [], 
+    errorMessage: '', 
+    loading: false, 
+    userData: {
+        'isAuthenticated' : false,
+        'userId': '',
+        'expirationDate': '',
+        'role': ''
+    }
+}
 
 export function UsersReducer(state: SittersState = INITIAL_STATE, action:any) {
  switch (action.type) {
@@ -20,7 +30,7 @@ export function UsersReducer(state: SittersState = INITIAL_STATE, action:any) {
         return tassign(state, { users: newArray, loading: false });
 
     case UsersActions.GET_USERS:
-        return tassign(state, { users: action.payload });
+        return tassign(state, { users: action.payload, loading: false });
 
     case UsersActions.UPDATE_USER:
         const updateArray= [... state.users]; 
@@ -28,15 +38,17 @@ export function UsersReducer(state: SittersState = INITIAL_STATE, action:any) {
         if(index >= 0){
             updateArray[index] = action.payload;
         }
-        return tassign(state, { users: updateArray });
+        return tassign(state, { users: updateArray, loading: false });
 
     case UsersActions.DELETE_USER:
-        return tassign(state, { users: state.users.filter(x => x.id !== action.payload)});
-        // index = state.sitters.findIndex(i => i.sitterId == action.payload)
-        // if(index >= 0){
-        //     let deleteArray= [... state.sitters.slice(index)]; //copy the original array
-        // }
-    
+        return tassign(state, { users: state.users.filter(x => x._id !== action.payload), loading: false });
+
+    case UsersActions.LOGIN:
+        return tassign(state, { userData: action.payload, loading: false });   
+
+    case UsersActions.LOGOUT:
+        return tassign(state, { userData: {'isAuthenticated' : false, 'userId': '', 'expirationDate': '', 'role': ''}, loading: false });
+
     default:
         return state;
 }

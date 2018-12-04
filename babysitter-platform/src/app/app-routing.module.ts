@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FindServiceComponent } from './find-service/find-service.component';
 import { SingleServiceComponent } from './single-service/single-service.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ServiceBookingsComponent } from './service-bookings/service-bookings.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'find-service', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'find-service', component: FindServiceComponent},
   {path: 'service/:id', component: SingleServiceComponent},
-  {path: 'profile/:id', component: UserProfileComponent}
+  {path: 'profile', component: UserProfileComponent},
+  {path: 'my-bookings', component: ServiceBookingsComponent}
 ];
 
 @NgModule({

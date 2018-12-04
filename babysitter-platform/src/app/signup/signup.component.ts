@@ -13,19 +13,13 @@ import { User } from '../entities/user';
 export class SignupComponent implements OnInit {
 
   registerForm: FormGroup;
-  loading: boolean;
 
   constructor(
-    private ngRedux: NgRedux<IAppState>,
     private fb: FormBuilder,
     private usersActions: UsersActions,
   ) { }
 
   ngOnInit() {
-
-    this.ngRedux.select(response =>response.users).subscribe( (data) =>{
-      this.loading = data.loading
-    })
 
     var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.registerForm = this.fb.group({
@@ -43,7 +37,8 @@ export class SignupComponent implements OnInit {
 
   public onSubmitRegister(){
     if(this.registerForm.valid){
-      let user = this.registerForm.value as User;
+      let user = Object.assign(new User(), this.registerForm.value as User);
+      user.picture = './../../assets/images/'+user.gender+'.png';
       this.usersActions.createUser(user);
     }
   }

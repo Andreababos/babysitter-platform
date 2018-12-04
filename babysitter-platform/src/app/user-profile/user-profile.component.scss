@@ -1,0 +1,32 @@
+
+.wrapper{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.login-card{
+    width:600px;
+}
+
+::ng-deep .mat-form-field{
+    padding: 8px 15px;
+}
+
+::ng-deep .mat-card-actions{
+    padding: 0px 22px !important;
+    margin-bottom: 0px !important;
+}
+
+.half-width{
+    width:45%;
+}
+
+.full-width{
+    width:100%;
+    p{
+        display: inline-block;
+        margin: 15px;
+    }
+}

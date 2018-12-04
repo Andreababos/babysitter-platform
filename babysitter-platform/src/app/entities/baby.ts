@@ -1,12 +1,13 @@
 import { Rating } from "./rating";
 
 export class Baby {
-    id: String;
+    _id: String;
     name: String;
     birthDate: Date;
     gender: String;
     specialNeeds?: String;
     description?: String;
     picture?: String;
-    rating?: Rating[]
+    rating?: Rating[];
+    price?: number;
 }

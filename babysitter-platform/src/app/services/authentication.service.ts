@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Userdata } from '../entities/userdata';
 import { Router } from "@angular/router";
+import { UsersService } from './users.service';
+import { error } from '@angular/compiler/src/util';
 
 
 // import 'rxjs/add/operator/map';
@@ -13,10 +15,12 @@ import { Router } from "@angular/router";
 @Injectable()
 export class AuthenticationService {
   public userData: Userdata = new Userdata;
+  public success: boolean = false;
 
   constructor( 
     private http:HttpClient,
-    private router: Router
+    private router: Router,
+    private usersService: UsersService
     ) { }
 
   public clearUserData() {
@@ -32,30 +36,25 @@ export class AuthenticationService {
     return this.userData;
   }
 
-  public authenticate(username, password, successCallback, errorCallback){
-    let body = new HttpParams({fromString:'grant_type=password&username='+username+'&password='+password});
-    
-    return this.http.post("/api/oauth/token", body )
-      .subscribe(data => {
-          this.userData.isAuthenticated = true;
-          this.userData.userId = data['.userId'];
-          this.userData.expirationDate = new Date(data['.expires']);
-          this.userData.role = data['role'];
-          this.saveData();
-          if (typeof successCallback === 'function') {
-            successCallback();
-          }
-        },
-        err => {
-          if (typeof errorCallback === 'function') {
-            if (err.error.error_description) {
-              errorCallback(err.error.error_description);
-            } else {
-              errorCallback('Unable to contact server; please, try again later.');
+  public authenticate(email, password): Userdata{
+
+     this.usersService.getUsers().subscribe( (data: any) => {
+        let users = data.filter(user => user.filter == "andrea");
+        let today = new Date();
+        let nextDay = new Date(today);
+        nextDay.setDate(today.getDate()+1);
+
+        users.forEach(user => {
+            if(user.email == email && user.password == password){
+                this.userData.isAuthenticated = true;
+                this.userData.userId = data['_id'];
+                this.userData.expirationDate = nextDay;
+                this.userData.role = data['role'];
+                return this.userData
             }
-          }
-        }
-      );
+        })
+     })
+     return this.userData;
   }
 
   public removeAuthentication () {
@@ -65,8 +64,7 @@ export class AuthenticationService {
 
   public setCookie() {
     let date = this.userData.expirationDate;
-    let dateString = date.toUTCString();
-    document.cookie = "auth_data ="+ this.userData+"; expires=" + dateString + "; path=/";
+    document.cookie = "auth_data ="+ this.userData+"; expires=" + date + "; path=/";
   }
 
   public removeCookie() {

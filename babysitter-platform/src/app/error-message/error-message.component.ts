@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../redux/store';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-error-message',
@@ -11,8 +12,10 @@ export class ErrorMessageComponent implements OnInit {
 
   public errorMessage: any;
 
+
   constructor(
-    private ngRedux: NgRedux<IAppState>
+    private ngRedux: NgRedux<IAppState>,
+    public snackBar: MatSnackBar
     ) { }
 
   ngOnInit() {

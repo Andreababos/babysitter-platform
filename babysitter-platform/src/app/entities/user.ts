@@ -2,24 +2,26 @@ import { Rating } from "./rating";
 import { Baby } from "./baby";
 
 export class User {
-    id: String;
-    role: String;
-    email: String;
-    firstName: String;
-    lastName: String;
-    gender?: String;
+    _id: string;
+    role: string;
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    gender?: string;
     birthDate: Date;
-    bio?: String;
-    picture?: String;
-    description?: String;
-    location?: String;
+    bio?: string = '';
+    picture?: string = 'avatar.jpg';
+    location?: string = '';
     rating?: Rating[];
-    phone?: String;
-    schedule?: any;
+    phone?: string = '';
+    schedule?: any = '';
+    filter: string = 'andrea';
 }
 
 export class Sitter extends User {
-    education?: String;
+    education?: string = '';
+    price?: number;
 }
 
 export class Parent extends User {

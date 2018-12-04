@@ -5,12 +5,15 @@
       <mat-card-subtitle>Create an account</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <form novalidate [formGroup]="registerForm" (ngSubmit)="onSubmitLogin(registerForm)" >
+      <form novalidate [formGroup]="registerForm" (ngSubmit)="onSubmitLogin()" >
           <div class="full-width">
           <p>Register as a :</p>
             <mat-button-toggle-group name="role" formControlName="role">
               <mat-button-toggle value="sitter"> Sitter </mat-button-toggle>
               <mat-button-toggle value="parent"> Parent </mat-button-toggle>
+              <mat-error *ngIf="registerForm.controls.role.touched && registerForm.controls.role.errors?.required">
+                  Pick a role 
+                </mat-error>
             </mat-button-toggle-group>
           </div>
           <mat-form-field class="half-width">
@@ -59,7 +62,7 @@
       </form> 
     </mat-card-content>
     <mat-card-actions>
-      <button [disabled]='loading' mat-raised-button color="primary">REGISTER</button>
+      <button mat-raised-button color="primary" (click)="onSubmitRegister()">REGISTER</button>
       <p><small>Already have an account? <a routerLink="/login">Log In!</a></small></p>
     </mat-card-actions>
   </mat-card>

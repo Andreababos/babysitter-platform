@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UsersActions } from '../redux/users.actions';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  public loginForm: FormGroup;
+  public error: string;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private usersActions: UsersActions,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -24,7 +29,10 @@ export class LoginComponent implements OnInit {
 
   }
 
-  public onSubmitLogin(form){
-
+  public onSubmitLogin(){
+    if(this.loginForm.valid){
+      this.usersActions.login(this.loginForm.value.email, this.loginForm.value.password);
+    }
   }
+
 }

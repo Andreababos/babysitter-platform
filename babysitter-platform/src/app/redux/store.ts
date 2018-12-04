@@ -2,25 +2,26 @@ import { routerReducer } from '@angular-redux/router';
 import { combineReducers } from 'redux';
 import { User } from '../entities/user';
 import { UsersReducer } from './users.reducer';
-import { Service } from '../entities/service';
+import { Userdata } from '../entities/userdata';
 
 export class SittersState {
     users: User[];
     errorMessage: string;
     loading: boolean;
+    userData: Userdata;
 
     static getEmptyState() {
-        return { users: [], errorMessage: '', loading: false}
-    }
-}
-
-export class ServicesState {
-    services: Service[];
-    errorMessage: string;
-    loading: boolean;
-
-    static getEmptyState() {
-        return { services: [], errorMessage: '', loading: false}
+        return { 
+            users: [], 
+            errorMessage: '', 
+            loading: false, 
+            userData: {
+                'isAuthenticated' : false,
+                'userId': '',
+                'expirationDate': '',
+                'role': ''
+            }
+        }
     }
 }
 
