@@ -13,15 +13,14 @@ import { IAppState, rootReducer } from './redux/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { AuthenticationService } from './services/authentication.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BookingComponent } from './booking/booking.component';
 import { ErrorMessageComponent } from './error-message/error-message.component';
 import { ServiceBookingsComponent } from './service-bookings/service-bookings.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { UsersService } from './services/users.service';
-import { ServicesService } from './services/services.service';
 import { LoadingComponent } from './loading/loading.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const matModules = [ MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule ];
 
@@ -53,7 +52,7 @@ const matModules = [ MatAutocompleteModule, MatButtonModule, MatButtonToggleModu
   exports: [
     ...matModules
   ],
-  providers: [AuthenticationService, HttpClient, UsersService, ServicesService],
+  providers: [HttpClient, UsersService, AuthGuard],
   bootstrap: [AppComponent]
 })
 

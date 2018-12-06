@@ -12,27 +12,27 @@
   </mat-card-actions>
 </mat-card> -->
 
-<div class="container">
-  <h1>More information about {{service.sitter.firstName}} {{service.sitter.lastName}}</h1>
+<div *ngIf="user" class="container">
+  <h1>More information about {{user.firstName}} {{user.lastName}}</h1>
 
   <div class="service-wrapper row">
     <div class="col-md-8">
         <div class="marginLR10">
           <div class="service-info boxed row">
             <div class="image-container col-md-4">
-              <img src="{{service.sitter.picture}}">
+              <img src="{{user.picture}}">
             </div>
             <div class="info-container col-md-8">
-              <p class="mat-card-title name"> {{service.sitter.firstName}} {{service.sitter.lastName}}</p>
-              <p class="education"> {{service.sitter.education}}</p>
-              <p class=""> {{service.sitter.bio}}</p>
+              <p class="mat-card-title name"> {{user.firstName}} {{user.lastName}}</p>
+              <p class="education"> {{user.education}}</p>
+              <p class=""> {{user.bio}}</p>
             </div>
           </div>
         </div>
     </div>
     <div class="service-booking boxed col-md-4">
         <div class="marginLR10">
-          <app-booking [service]="service" [type]="type"></app-booking>
+          <app-booking [book]="user" [type]="type"></app-booking>
         </div>
     </div>
   </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Service } from '../entities/service';
 import { ActivatedRoute } from '@angular/router';
+import { User, Sitter, Parent } from '../entities/user';
+import { Baby } from '../entities/baby';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-single-service',
@@ -9,24 +11,30 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SingleServiceComponent implements OnInit {
 
-  serviceId: string;
-  service: Service;
+  id: string;
+  sitter: Sitter;
+  parent: Parent;
+  baby: Baby;
+  user: any;
   type: string = 'sitter';
 
   constructor(
     private route: ActivatedRoute,
+    private usersService: UsersService
 
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.serviceId = (params['id']);
-      this.loadService();
+      this.id = (params['id']);
+      this.loadUser();
     })
   }
 
-  public loadService(){
-    
+  public loadUser(){
+    this.usersService.getUsers().subscribe( (data: any) => {
+        this.user = data.filter(user => user._id === this.id)[0]
+  });
   }
 
 }

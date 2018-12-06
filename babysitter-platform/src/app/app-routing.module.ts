@@ -6,15 +6,16 @@ import { FindServiceComponent } from './find-service/find-service.component';
 import { SingleServiceComponent } from './single-service/single-service.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ServiceBookingsComponent } from './service-bookings/service-bookings.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'find-service', pathMatch: 'full' },
+  {path: '', redirectTo: 'find-service', pathMatch: 'full', canActivate: [AuthGuard] },
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'find-service', component: FindServiceComponent},
-  {path: 'service/:id', component: SingleServiceComponent},
-  {path: 'profile', component: UserProfileComponent},
-  {path: 'my-bookings', component: ServiceBookingsComponent}
+  {path: 'find-service', component: FindServiceComponent, canActivate: [AuthGuard]},
+  {path: 'service/:id', component: SingleServiceComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+  {path: 'my-bookings', component: ServiceBookingsComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

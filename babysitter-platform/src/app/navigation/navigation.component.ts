@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { LoginActions } from '../redux/login/login.actions';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../redux/store';
 
 @Component({
   selector: 'app-navigation',
@@ -10,22 +12,27 @@ import { Router } from '@angular/router';
 export class NavigationComponent implements OnInit {
 
   public lookingFor:string;
+  public isLoggedIn: boolean;
   
   constructor(
-    private authService: AuthenticationService,
+    private loginActions: LoginActions,
+    private ngRedux: NgRedux<IAppState>,
     private router: Router
   ) { }
 
   ngOnInit() {
-    if(this.authService.getUserData().role == 'parent'){
-      this.lookingFor = 'sitter';
-    } else if (this.authService.getUserData().role == 'sitter'){
-      this.lookingFor = 'job';
-    }
+    this.ngRedux.select(res => res.userData).subscribe((data) => {
+      this.isLoggedIn = data.isAuthenticated;
+      if(data.role == 'parent'){
+        this.lookingFor = 'sitter';
+      } else if(data.role == 'sitter'){
+        this.lookingFor = 'job';
+      }
+    })
   }
 
   public logout(){
-    this.authService.removeAuthentication();
+    this.loginActions.logout();
     this.router.navigate(['login']);
   }
 

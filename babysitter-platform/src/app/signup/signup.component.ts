@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../redux/store';
-import { UsersActions } from '../redux/users.actions';
+import { UsersActions } from '../redux/users/users.actions';
 import { User } from '../entities/user';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsersActions } from '../redux/users.actions';
+import { LoginActions } from '../redux/login/login.actions';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private usersActions: UsersActions,
+    private loginActions: LoginActions,
     private router: Router
   ) { }
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   public onSubmitLogin(){
     if(this.loginForm.valid){
-      this.usersActions.login(this.loginForm.value.email, this.loginForm.value.password);
+      this.loginActions.login(this.loginForm.value.email, this.loginForm.value.password);
     }
   }
 

@@ -19,14 +19,27 @@
     margin-bottom: 0px !important;
 }
 
+::ng-deep .mat-card-header{
+    display: inline-block;
+    width: 90%;
+    .mat-card-header-text{
+        max-width: 100%;
+    }
+    button{
+        float: right;
+    }
+}
+
 .half-width{
     width:45%;
 }
 
 .full-width{
-    width:100%;
+    width:90%;
     p{
         display: inline-block;
         margin: 15px;
     }
 }
+
+

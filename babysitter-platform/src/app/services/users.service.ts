@@ -4,6 +4,7 @@ import { Userdata } from '../entities/userdata';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../entities/user';
+import { Booking } from '../entities/booking';
 
 
 @Injectable()
@@ -51,13 +52,21 @@ export class UsersService {
                     this.userData['userId'] = user._id;
                     this.userData['expirationDate'] = nextDay;
                     this.userData['role'] = user.role;
-                    return this.userData;
                 }
             })
-            if(!this.userData.isAuthenticated){
+            if(this.userData.isAuthenticated){
+                return this.userData;
+            } else{
                 return Observable.throw('Incorrect email or password');
             }
         }));
     }
 
+    public addBooking(booking:Booking){
+        return this.http.post(this.baseUrl, booking, {responseType: 'text'});
+    }
+
+    public getBookings(){
+        return this.http.get(this.baseUrl);
+    }
 }

@@ -2,7 +2,7 @@
   <h1>Find a {{lookingFor}}</h1>
 
   <div class="service-wrapper" *ngFor="let sitter of sitters">
-    <mat-card *ngIf="lookingFor == 'sitter'" class="example-card">
+    <mat-card *ngIf="lookingFor == 'sitter'" class="example-card" routerLink="./../service/{{sitter._id}}">
         <img mat-card-image src="{{sitter.picture}}" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p class="education" *ngIf="sitter.education">{{sitter.education}}</p>
@@ -11,8 +11,7 @@
           <p *ngIf="sitter.rating">{{sitter.rating}}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button routerLink="./../service/{{sitter._id}}">MORE INFO</button>
-          <button mat-raised-button color="primary">BOOK</button>
+          <button mat-raised-button routerLink="./../service/{{sitter._id}}" color="primary">BOOK</button>
         </mat-card-actions>
       </mat-card>
   </div>
