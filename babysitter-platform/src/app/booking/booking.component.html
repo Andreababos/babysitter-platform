@@ -3,29 +3,28 @@
   <p> {{ user.price }} DKK/hour</p>
   <div class="dates">
     <form [formGroup]='bookingForm'>
-        <mat-form-field>
-            <input matInput [matDatepicker]="startDate" [min]="minDate" [max]="maxDate" [matDatepickerFilter]="scheduleFilter" (focus)="startDate.open()" placeholder="Start date" formControlName="startDate">
-            <mat-datepicker-toggle matSuffix [for]="startDate">
-              <mat-icon matDatepickerToggleIcon>arrow_forward</mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #startDate></mat-datepicker>
-            <mat-error *ngIf="bookingForm.controls.startDate.touched && bookingForm.controls.startDate.errors?.required">
-                Start date is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="startDate" [min]="minDate" [max]="maxDate" [matDatepickerFilter]="scheduleFilter"
+          (focus)="startDate.open()" placeholder="Start date" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate">
+          <mat-icon matDatepickerToggleIcon>arrow_forward</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+        <mat-error *ngIf="bookingForm.controls.startDate.touched && bookingForm.controls.startDate.errors?.required">
+          Start date is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
 
-          <mat-form-field>
-              <input matInput [matDatepicker]="endDate" [min]="bookingForm.value.startDate" [max]="maxDate" [matDatepickerFilter]="scheduleFilter" (focus)="endDate.open()" placeholder="End date" formControlName="endDate">
-              <mat-datepicker #endDate></mat-datepicker>
-              <mat-error *ngIf="bookingForm.controls.endDate.touched && bookingForm.controls.endDate.errors?.required">
-                  End date is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="endDate" [min]="bookingForm.value.startDate" [max]="maxDate"
+          [matDatepickerFilter]="scheduleFilter" (focus)="endDate.open()" placeholder="End date" formControlName="endDate">
+        <mat-datepicker #endDate></mat-datepicker>
+        <mat-error *ngIf="bookingForm.controls.endDate.touched && bookingForm.controls.endDate.errors?.required">
+          End date is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
     </form>
   </div>
   <p *ngIf="total != 0">Your total is {{ total }} DKK</p>
-  <button mat-raised-button color="primary" (click)='book()' >BOOK</button>
+  <button mat-raised-button color="primary" (click)='book()'>BOOK</button>
 </div>
-
-
-

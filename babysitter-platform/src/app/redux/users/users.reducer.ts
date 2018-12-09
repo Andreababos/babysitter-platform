@@ -1,16 +1,16 @@
 import { UsersActions } from './users.actions';
-import { SittersState } from '../store';
+import { UsersState } from '../store';
 import { tassign } from 'tassign';
 import { User } from '../../entities/user';
 import { LoginActions } from '../login/login.actions';
 
-const INITIAL_STATE: SittersState = { 
+const INITIAL_STATE: UsersState = { 
     users: [], 
     errorMessage: '', 
     loading: false
 }
 
-export function UsersReducer(state: SittersState = INITIAL_STATE, action:any) {
+export function UsersReducer(state: UsersState = INITIAL_STATE, action:any) {
  switch (action.type) {
 
     case UsersActions.START_SPINNER:
@@ -34,7 +34,6 @@ export function UsersReducer(state: SittersState = INITIAL_STATE, action:any) {
     case UsersActions.UPDATE_USER:
         const updateArray= [... state.users]; 
         let index = updateArray.indexOf(action.payload._id);
-        console.log(action.payload)
         if(index >= 0){
             updateArray[index] = action.payload;
         }

@@ -31,6 +31,11 @@ export class SingleServiceComponent implements OnInit {
     })
   }
 
+
+  /* 
+  TODO:
+  Do this with redux
+  */
   public loadUser(){
     this.usersService.getUsers().subscribe( (data: any) => {
         this.user = data.filter(user => user._id === this.id)[0]

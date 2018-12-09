@@ -26,11 +26,12 @@ export class FindServiceComponent implements OnInit {
     this.ngRedux.select(res => res.userData).subscribe((data) => {
       if(data.role == 'parent'){
         this.lookingFor = 'sitter';
-        this.getSitters();
+        //this.getSitters();
       } else if(data.role == 'sitter'){
         this.lookingFor = 'job';
-        this.getBabies();
+        //this.getBabies();
       }
+      this.usersActions.getUsers();
     })
   }
 

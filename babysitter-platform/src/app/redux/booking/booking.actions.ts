@@ -53,7 +53,7 @@ constructor (
             type: UsersActions.START_SPINNER
         } as any )
         this.usersService.getBookings().subscribe( (data: any) =>{
-            var bookings = data.filter(booking => booking.filter === 'andrea').filter(booking => booking.type === 'booking');
+            var bookings: Booking[] = data.filter(booking => booking.filter == 'andrea').filter(booking => booking.type == 'booking');
             this.ngRedux.dispatch({
                 type: BookingActions.GET_BOOKINGS,
                 payload: bookings

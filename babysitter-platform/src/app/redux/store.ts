@@ -7,7 +7,7 @@ import { LoginReducer } from './login/login.reducer';
 import { Booking } from '../entities/booking';
 import { BookingReducer } from './booking/booking.reducer';
 
-export class SittersState {
+export class UsersState {
     users: User[];
     errorMessage: string;
     loading: boolean;
@@ -51,7 +51,7 @@ export class BookingState {
 
 
 export class IAppState {
-    users?: SittersState;
+    users?: UsersState;
     userData?: LoginState;
     bookings?: BookingState;
 }

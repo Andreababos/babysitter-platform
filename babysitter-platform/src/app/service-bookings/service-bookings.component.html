@@ -1,3 +1,24 @@
-<p>
-  service-bookings works!
-</p>
+<div class="container">
+  <div class="service-wrapper" *ngFor="let booking of bookings">
+    <ng-container *ngIf='role == "parent"'>
+    <mat-card *ngIf='booking.sitter' class="example-card" routerLink="./../service/{{booking.sitter._id}}">
+        <img mat-card-image src="{{booking.sitter.picture}}">
+        <mat-card-content>
+          <p class="education">{{booking.startDate | date:'EEEE, MMMM d' }} - {{booking.endDate | date:'EEEE, MMMM d'}}</p>
+          <mat-card-title>{{booking.sitter.firstName}} {{booking.sitter.lastName}}</mat-card-title>
+          <mat-card-subtitle>{{booking.payout}} DKK </mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf='role == "sitter"'>
+        <mat-card *ngIf='booking.parent' class="example-card" routerLink="./../service/{{booking.parent._id}}">
+            <img mat-card-image src="{{booking.parent.picture}}">
+            <mat-card-content>
+              <p class="education">{{booking.startDate | date:'EEEE, MMMM d' }} - {{booking.endDate | date:'EEEE, MMMM d, y'}}</p>
+              <mat-card-title>{{booking.parent.firstName}} {{booking.parent.lastName}}</mat-card-title>
+              <mat-card-subtitle>{{booking.payout}} DKK </mat-card-subtitle>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+  </div>
+</div>
