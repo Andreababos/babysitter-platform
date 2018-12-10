@@ -5,7 +5,7 @@ import { UsersReducer } from './users/users.reducer';
 import { Userdata } from '../entities/userdata';
 import { LoginReducer } from './login/login.reducer';
 import { Booking } from '../entities/booking';
-import { BookingReducer } from './booking/booking.reducer';
+import { BookingReducer } from './bookings/booking.reducer';
 
 export class UsersState {
     users: User[];

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Booking } from '../entities/booking';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../redux/store';
-import { BookingActions } from '../redux/booking/booking.actions';
+import { BookingActions } from '../redux/bookings/booking.actions';
 
 @Component({
   selector: 'app-booking',

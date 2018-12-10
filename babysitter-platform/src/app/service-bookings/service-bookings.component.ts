@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../redux/store';
 import { Booking } from '../entities/booking';
-import { BookingActions } from '../redux/booking/booking.actions';
+import { BookingActions } from '../redux/bookings/booking.actions';
 
 @Component({
   selector: 'app-service-bookings',
