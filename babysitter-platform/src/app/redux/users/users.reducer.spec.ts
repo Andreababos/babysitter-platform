@@ -25,22 +25,26 @@ beforeEach(() => {
 
   it('should start the spinner', () => {
     let state = UsersState.getEmptyState();
+    deepFreeze(state);
     expect(UsersReducer(state, {type: types.UsersActions.START_SPINNER})).toEqual({users: [], errorMessage: '', loading: true})
   })
 
   it('should stop the spinner', () => {
     let state = {users: [], errorMessage: '', loading: true}
+    deepFreeze(state);
     expect(UsersReducer(state, {type: types.UsersActions.STOP_SPINNER})).toEqual({users: [], errorMessage: '', loading: false})
   })
   
   it('should return an error message', () => {
     let state = UsersState.getEmptyState();
+    deepFreeze(state);
     expect(UsersReducer(state, {type: types.UsersActions.FAILURE, payload:'Error'})).toEqual({users: [], errorMessage: 'Error', loading: false})
   })
 
   it('should get all users', () => {
     inject( [HttpTestingController, UsersService], (  httpMock: HttpTestingController, service: UsersService) => {
     let state = UsersState.getEmptyState()
+    deepFreeze(state);
     service.getUsers().subscribe( (result: any) =>{
         let afterState = UsersReducer(state, {type: types.UsersActions.GET_USERS, payload: result})
         let expectedState = {users: result, errorMessage: '', loading: false}

@@ -12,7 +12,7 @@ export function LoginReducer(state: Userdata = INITIAL_STATE, action:any) {
         return tassign(state, {'isAuthenticated' : true, 'userId': action.payload.userId, 'expirationDate': action.payload.expirationDate, 'role': action.payload.role});   
 
     case LoginActions.LOGOUT:
-        return tassign(state, { 'isAuthenticated' : false, 'userId': '', 'expirationDate': '', 'role': ''});
+        return tassign(state, INITIAL_STATE);
 
     default:
         return state;

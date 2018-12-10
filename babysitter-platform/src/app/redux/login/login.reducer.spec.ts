@@ -2,10 +2,6 @@ var deepFreeze = require('deep-freeze');
 import { LoginReducer } from './login.reducer';
 import * as types from './login.actions';
 import { LoginState } from './../store';
-import { UsersService } from 'src/app/services/users.service';
-import { TestBed, inject } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from  '@angular/common/http/testing';
-import { User } from 'src/app/entities/user';
 
  describe('Login reducer', () => {
 
@@ -14,7 +10,8 @@ import { User } from 'src/app/entities/user';
   })
 
   it('should successfully log in', () => {
-    let state = LoginState.getEmptyState();
+    let state = LoginState.getEmptyState()
+    deepFreeze(state);
     let today = new Date();
     let nextDay = new Date(today);
     nextDay.setDate(today.getDate()+1);
@@ -23,7 +20,8 @@ import { User } from 'src/app/entities/user';
   })
 
   it('should log out', () => {
-    let state = LoginState.getEmptyState();
+    let state = { 'isAuthenticated' : true, 'userId': '5c0936ac04894fd045295028', 'expirationDate': '2018-04-12', 'role': 'sitter'}
+    deepFreeze(state);
     expect(LoginReducer(state, {type: types.LoginActions.LOGOUT})).toEqual(LoginState.getEmptyState())
   })
   
