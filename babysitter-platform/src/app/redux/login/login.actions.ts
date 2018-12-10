@@ -18,7 +18,6 @@ constructor (
   private router: Router
 ) {} 
   
-    static FAILURE: string = 'FAILURE';
     static LOGIN: string = 'LOGIN';
     static LOGOUT: string = 'LOGOUT';
 
@@ -38,7 +37,7 @@ constructor (
             this.router.navigateByUrl('/');
         }, error =>{
             this.ngRedux.dispatch({
-                type: LoginActions.FAILURE,
+                type: UsersActions.FAILURE,
                 payload: error
             } as any )
             this.ngRedux.dispatch({

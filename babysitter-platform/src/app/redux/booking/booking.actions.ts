@@ -18,8 +18,7 @@ constructor (
   private usersService: UsersService,
   private router: Router
 ) {} 
-  
-    static FAILURE: string = 'FAILURE';
+
     static CREATE_BOOKING: string = 'CREATE_BOOKING';
     static GET_BOOKINGS: string = 'GET_BOOKINGS';
 
@@ -39,7 +38,7 @@ constructor (
             this.router.navigateByUrl('/my-bookings');
         }, error =>{
             this.ngRedux.dispatch({
-                type: BookingActions.FAILURE,
+                type: UsersActions.FAILURE,
                 payload: error
             } as any )
             this.ngRedux.dispatch({
@@ -63,7 +62,7 @@ constructor (
             } as any )
         }, error =>{
             this.ngRedux.dispatch({
-                type: BookingActions.FAILURE,
+                type: UsersActions.FAILURE,
                 payload: error
             } as any )
             this.ngRedux.dispatch({
