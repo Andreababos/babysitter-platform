@@ -9,7 +9,7 @@ export class User {
     firstName: string;
     lastName: string;
     gender?: string;
-    birthDate: any;
+    birthDate?: any;
     bio?: string = '';
     picture?: string = 'avatar.jpg';
     location?: string = '';

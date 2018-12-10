@@ -13,6 +13,7 @@ export class FindServiceComponent implements OnInit {
 
   public lookingFor: string;
   public sitters: Sitter[];
+  public search: string = '';
 
   constructor(
     private ngRedux: NgRedux<IAppState>,

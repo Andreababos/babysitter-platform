@@ -20,7 +20,11 @@ export class ErrorMessageComponent implements OnInit {
 
   ngOnInit() {
     this.ngRedux.select(response =>response.users).subscribe( (data) =>{
-      this.errorMessage = data.errorMessage
+      if(data.errorMessage !== ""){
+        this.snackBar.open(data.errorMessage, 'Okay', {
+          duration: 3000
+        });
+      }
     })
   }
 

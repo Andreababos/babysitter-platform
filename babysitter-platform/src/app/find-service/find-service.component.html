@@ -1,7 +1,9 @@
 <div class="container">
   <h1>Find a {{lookingFor}}</h1>
-
-  <div class="service-wrapper" *ngFor="let sitter of sitters">
+  <mat-form-field class="search">
+      <input matInput placeholder="Search by name or location" [(ngModel)]="search">
+  </mat-form-field>
+  <div class="service-wrapper" *ngFor="let sitter of sitters | filterUsers: search">
     <mat-card *ngIf="lookingFor == 'sitter'" class="example-card" routerLink="./../service/{{sitter._id}}">
         <img mat-card-image src="{{sitter.picture}}" alt="Photo of a Shiba Inu">
         <mat-card-content>
