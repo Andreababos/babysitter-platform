@@ -42,6 +42,7 @@ beforeEach(() => {
   })
 
   it('should get all users', () => {
+    //TODO: do not use the webservice
     inject( [HttpTestingController, UsersService], (  httpMock: HttpTestingController, service: UsersService) => {
     let state = UsersState.getEmptyState()
     deepFreeze(state);

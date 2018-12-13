@@ -58,7 +58,7 @@ constructor (
                 type: UsersActions.CREATE_USER,
                 payload: user
             } as any )
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/home/login');
         }, error =>{
             this.ngRedux.dispatch({
                 type: UsersActions.FAILURE,
@@ -77,7 +77,7 @@ constructor (
                 type: UsersActions.UPDATE_USER,
                 payload: user
             } as any)
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/portal');
         }, error =>{
             this.ngRedux.dispatch({
                 type: UsersActions.FAILURE,
@@ -95,6 +95,10 @@ constructor (
                 type: UsersActions.DELETE_USER,
                 payload: userId
             } as any )
+            this.ngRedux.dispatch({
+                type: LoginActions.LOGOUT
+            } as any )
+            this.router.navigateByUrl('/');
             
         }, error =>{
             this.ngRedux.dispatch({

@@ -34,48 +34,57 @@ describe('testing the sitters page', () =>{
             browser.sleep(3000)
             expect(updatedSitterNumber).toEqual(sitterNumber+1);
         })
+        $$('#logoutButton').click();
     });
 
-    // it('2.0: Should update a users name', () => {
-    //     page.login(); 
-    //     //get the name
-    //     var initialValue = $$('mat-card-title').first();
-    //     browser.sleep(3000)
-    //     //go to the edit sitter page
-    //     $$('#profileMenuButton').click();
-    //     //clear the input box
-    //     $$('#firstname').clear();
-    //     //append to the name
-    //     $$('#firstname').sendKeys('Hannah');
-    //     //clear the input box
-    //     $$('#lastname').clear();
-    //     //append to the name
-    //     $$('#lastname').sendKeys('Baker');
-    //     browser.sleep(3000)
-    //     //submit the change
-    //     $$('#submitUpdateButton').click();
-    //     browser.sleep(3000)
-    //     //get the new name
-    //     var newValue = $$('mat-card-title').first();
-    //     //compare the names
-    //     expect(newValue != initialValue).toBe(true);
-    //     expect(newValue).toBe('Hannah Baker');
-    //   });
+    it('2.0: Should update a users name', () => {
+        page.login(); 
+        browser.sleep(3000)
+        //go to the edit sitter page
+        $$('#profileMenuButton').click();
+        //clear the input box
+        //get the name
+        var initialValue = $$('#firstname').value;
+        $$('#firstname').clear();
+        //append to the name
+        $$('#firstname').sendKeys('Patrik');
+        browser.sleep(3000)
+        //submit the change
+        $$('#submitUpdateButton').click();
+        browser.sleep(3000)
+        //get the new name
+        $$('#profileMenuButton').click();
+        //clear the input box
+        //get the name
+        var newValue = $$('#firstname').value;
+        $$('#logoutButton').click();
+        //compare the names
+        expect(newValue != initialValue).toBe(true);
+        expect(newValue).toBe('Patrik');
+      });
     
-    //   it('2.1: Should not have changed data, if we do not edit the input boxes ', () => {
-    //     page.login();
-    //     browser.sleep(3000)
-    //     //get the name
-    //     var initialValue = $$('mat-card-title').first();
-    //     //go to the edit sitter page
-    //     $$('#profileMenuButton').click();
-    //     browser.sleep(3000)
-    //     //submit the change
-    //     $$('#submitUpdateButton').click();
-    //     browser.sleep(3000)
-    //     //get the new name
-    //     var newValue = $$('mat-card-title').first();
-    //     //compare the names
-    //     expect(newValue == initialValue).toBe(true);
-    //   });
+      it('2.1: Should not have changed data, if we do not edit the input boxes ', () => {
+        page.login();
+        browser.sleep(3000)
+        //go to the edit sitter page
+        $$('#profileMenuButton').click();
+        //clear the input box
+        //get the name
+        var initialValue = $$('#firstname').value;
+        $$('#firstname').clear();
+        browser.sleep(3000)
+        //submit the change
+        $$('#submitUpdateButton').click();
+        browser.sleep(3000)
+        //get the new name
+        $$('#profileMenuButton').click();
+        //clear the input box
+        //get the name
+        var newValue = $$('#firstname').value;
+        $$('#logoutButton').click();
+        //compare the names
+        expect(newValue == initialValue).toBe(true);
+      });
+
+      
 })

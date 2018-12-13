@@ -92,6 +92,21 @@ describe('User filter', () => {
         let result = filter.transform(users, ''); // Act
         expect(result.length).toBe(5); //Assert (Expect)
       });
+
+      it('2.0: Test with no dataset (empty array), searching for Per', () => {
+        // Arrage, Act, Assert
+        let filter = new FilterUsers(); // Arrange
+        let result = filter.transform([], 'Per'); // Act
+        expect(result.length).toBe(0); //Assert (Expect)
+      });
+
+      it('2.1: Passing undefined as a parameter', () => {
+        // Arrage, Act, Assert
+        let filter = new FilterUsers(); // Arrange
+        let result = filter.transform(users, undefined); // Act
+        console.log(result)
+        expect(result.length).toBe(5); //Assert (Expect)
+      });
     });
    
    

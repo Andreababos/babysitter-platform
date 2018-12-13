@@ -9,7 +9,7 @@ import { User } from '.././entities/user';
 export class FilterUsers implements PipeTransform {
      
     transform(users: User[], args: string): any {
-        if(users){
+        if(users && typeof(args)=='string'){
             return users.filter( function (user) {
                 let fullName = user.firstName.toLowerCase()+" "+user.lastName.toLowerCase(); 
                 return  user.firstName.toLowerCase().includes(args.toLowerCase()) || 

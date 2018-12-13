@@ -2,13 +2,13 @@
   <div class="container">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" id="sitterMenuButton" routerLink="./../find-service">Find a {{lookingFor}}</a>
+        <a class="nav-link" id="sitterMenuButton" [routerLink]="['/portal/find-service']">Find a {{lookingFor}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="profileMenuButton" routerLink="./../profile">Profile</a>
+        <a class="nav-link" id="profileMenuButton" [routerLink]="['/portal/profile']">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="./../my-bookings">My bookings</a>
+        <a class="nav-link" [routerLink]="['/portal/my-bookings']">My bookings</a>
       </li>
       <li class="nav-item align-right">
           <button mat-raised-button color="warn" id="logoutButton" (click)="logout()">Log Out</button>

@@ -34,7 +34,7 @@ constructor (
             this.ngRedux.dispatch({
                 type: UsersActions.STOP_SPINNER
             } as any )
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/portal');
         }, error =>{
             this.ngRedux.dispatch({
                 type: UsersActions.FAILURE,
@@ -50,7 +50,7 @@ constructor (
         this.ngRedux.dispatch({
             type: LoginActions.LOGOUT,
         } as any )
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/home/login');
         
     }
 }

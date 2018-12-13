@@ -1,7 +1,8 @@
 <div class="container">
+  <p *ngIf="bookings.length == 0">No bookings to display :(</p>
   <div class="service-wrapper" *ngFor="let booking of bookings">
     <ng-container *ngIf='role == "parent"'>
-    <mat-card *ngIf='booking.sitter' class="example-card" routerLink="./../service/{{booking.sitter._id}}">
+    <mat-card *ngIf='booking.sitter' class="example-card" [routerLink]="[portal/service/booking.sitter._id]">
         <img mat-card-image src="{{booking.sitter.picture}}">
         <mat-card-content>
           <p class="education">{{booking.startDate | date:'EEEE, MMMM d' }} - {{booking.endDate | date:'EEEE, MMMM d'}}</p>
@@ -11,7 +12,7 @@
       </mat-card>
     </ng-container>
     <ng-container *ngIf='role == "sitter"'>
-        <mat-card *ngIf='booking.parent' class="example-card" routerLink="./../service/{{booking.parent._id}}">
+        <mat-card *ngIf='booking.parent' class="example-card" [routerLink]="[portal/service/booking.sitter._id]">
             <img mat-card-image src="{{booking.parent.picture}}">
             <mat-card-content>
               <p class="education">{{booking.startDate | date:'EEEE, MMMM d' }} - {{booking.endDate | date:'EEEE, MMMM d, y'}}</p>

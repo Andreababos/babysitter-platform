@@ -33,7 +33,7 @@ export class NavigationComponent implements OnInit {
 
   public logout(){
     this.loginActions.logout();
-    this.router.navigate(['login']);
+    this.router.navigate(['/home/login']);
   }
 
 }

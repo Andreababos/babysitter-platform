@@ -22,6 +22,9 @@ import { UsersService } from './services/users.service';
 import { LoadingComponent } from './loading/loading.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { FilterUsers } from './filters/user.filter';
+import { HomeComponent } from './home/home.component';
+import { PortalComponent } from './portal/portal.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const matModules = [ MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule ];
 
@@ -38,7 +41,10 @@ const matModules = [ MatAutocompleteModule, MatButtonModule, MatButtonToggleModu
     ServiceBookingsComponent,
     NavigationComponent,
     LoadingComponent,
-    FilterUsers
+    FilterUsers,
+    HomeComponent,
+    PortalComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
