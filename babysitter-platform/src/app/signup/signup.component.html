@@ -8,8 +8,8 @@
       <form novalidate [formGroup]="registerForm" (ngSubmit)="onSubmitLogin()" >
           <div class="full-width">
           <p>Register as a :</p>
-            <mat-button-toggle-group name="role" formControlName="role">
-              <mat-button-toggle value="sitter"> Sitter </mat-button-toggle>
+            <mat-button-toggle-group name="role" id="role" formControlName="role">
+              <mat-button-toggle value="sitter" id="sitter"> Sitter </mat-button-toggle>
               <mat-button-toggle value="parent"> Parent </mat-button-toggle>
               <mat-error *ngIf="registerForm.controls.role.touched && registerForm.controls.role.errors?.required">
                   Pick a role 
@@ -17,19 +17,19 @@
             </mat-button-toggle-group>
           </div>
           <mat-form-field class="half-width">
-              <input matInput placeholder="First Name" name="firstName" formControlName="firstName" type="text">
+              <input matInput placeholder="First Name" name="firstName" id="firstname" formControlName="firstName" type="text">
               <mat-error *ngIf="registerForm.controls.firstName.touched && registerForm.controls.firstName.errors?.required">
                 First name is <strong>required</strong>
               </mat-error>
           </mat-form-field>
           <mat-form-field class="half-width">
-              <input matInput placeholder="Last Name" name="lastName" formControlName="lastName" type="text">
+              <input matInput placeholder="Last Name" name="lastName" id="lastname" formControlName="lastName" type="text">
               <mat-error *ngIf="registerForm.controls.lastName.touched && registerForm.controls.lastName.errors?.required">
                 Last name is <strong>required</strong>
               </mat-error>
           </mat-form-field>
           <mat-form-field class="half-width">
-            <input matInput placeholder="Email" name="email" formControlName="email" type="email">
+            <input matInput placeholder="Email" name="email" id="email" formControlName="email" type="email">
             <mat-error *ngIf="registerForm.controls.email.touched && registerForm.controls.email.errors?.required">
               Email is <strong>required</strong>
             </mat-error>
@@ -38,7 +38,7 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field class="half-width">
-              <input matInput placeholder="Password" name="password" formControlName="password" type="password">
+              <input matInput placeholder="Password" name="password" id="password" formControlName="password" type="password">
               <mat-error *ngIf="registerForm.controls.password.touched && registerForm.controls.password.errors?.required">
                 Password is <strong>required</strong>
               </mat-error>
@@ -47,13 +47,13 @@
               </mat-error>
           </mat-form-field>
           <mat-form-field class="half-width">
-              <input matInput placeholder="Birth date" name="birthDate" formControlName="birthDate" type="date">
+              <input matInput placeholder="Birth date" name="birthDate"  id="birthdate" formControlName="birthDate" type="date">
               <mat-error *ngIf="registerForm.controls.birthDate.touched && registerForm.controls.birthDate.errors?.required">
                 Birth date is <strong>required</strong>
               </mat-error>
           </mat-form-field>
           <mat-form-field class="half-width">
-              <select matNativeControl placeholder="Gender" name="gender" formControlName="gender">
+              <select matNativeControl placeholder="Gender" name="gender" id="gender" formControlName="gender">
                   <option value="">Choose gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -62,7 +62,7 @@
       </form> 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="onSubmitRegister()">REGISTER</button>
+      <button mat-raised-button color="primary" id="submitRegisterButton" (click)="onSubmitRegister()">REGISTER</button>
       <p><small>Already have an account? <a routerLink="/login">Log In!</a></small></p>
     </mat-card-actions>
   </mat-card>

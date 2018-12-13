@@ -6,7 +6,7 @@ export class AppPage {
   }
 
   login() {
-    browser.get('login');
+    //browser.get('login');
     element(by.name('email')).sendKeys("parent@mail.com");
     element(by.name('password')).sendKeys("password");
     element(by.id('btnLogin')).click();

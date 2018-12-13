@@ -9,13 +9,13 @@
       <mat-card-content>
         <form novalidate [formGroup]="updateForm">
             <mat-form-field class="half-width">
-                <input matInput placeholder="First Name" name="firstName" formControlName="firstName" type="text">
+                <input matInput placeholder="First Name" id="firstname" name="firstName" formControlName="firstName" type="text">
                 <mat-error *ngIf="updateForm.controls.firstName.touched && updateForm.controls.firstName.errors?.required">
                   First name is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="half-width">
-                <input matInput placeholder="Last Name" name="lastName" formControlName="lastName" type="text">
+                <input matInput placeholder="Last Name" id="lastname" name="lastName" formControlName="lastName" type="text">
                 <mat-error *ngIf="updateForm.controls.lastName.touched && updateForm.controls.lastName.errors?.required">
                   Last name is <strong>required</strong>
                 </mat-error>
@@ -64,7 +64,7 @@
         </form> 
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="onSubmitUpdate()">SAVE CHANGES</button>
+        <button mat-raised-button color="primary" id="submitUpdateButton" (click)="onSubmitUpdate()">SAVE CHANGES</button>
       </mat-card-actions>
     </mat-card>
   </div>

@@ -33,10 +33,7 @@ export function UsersReducer(state: UsersState = INITIAL_STATE, action:any) {
 
     case UsersActions.UPDATE_USER:
         const updateArray= [... state.users]; 
-        let index = updateArray.indexOf(action.payload._id);
-        if(index >= 0){
-            updateArray[index] = action.payload;
-        }
+        let index = updateArray.findIndex(x=>x._id == action.payload._id);
         return tassign(state, { users: updateArray, loading: false });
 
     case UsersActions.DELETE_USER:
