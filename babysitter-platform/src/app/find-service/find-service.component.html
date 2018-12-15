@@ -6,7 +6,7 @@
   <ng-container *ngIf="lookingFor == 'sitter'">
   <div class="service-wrapper" *ngFor="let sitter of sitters | filterUsers: search">
     <p *ngIf="sitters.length == 0"> No sitters to display</p>
-    <mat-card class="example-card" [routerLink]="['portal/service/sitter._id']">
+    <mat-card class="example-card" [routerLink]="['./../service/', sitter._id]">
         <img mat-card-image src="{{sitter.picture}}" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p class="education" *ngIf="sitter.education">{{sitter.education}}</p>
@@ -15,7 +15,7 @@
           <p *ngIf="sitter.rating">{{sitter.rating}}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button [routerLink]="['portal/service/sitter._id']" color="primary">BOOK</button>
+          <button mat-raised-button [routerLink]="['./../service/', sitter._id]" color="primary">BOOK</button>
         </mat-card-actions>
       </mat-card>
   </div>

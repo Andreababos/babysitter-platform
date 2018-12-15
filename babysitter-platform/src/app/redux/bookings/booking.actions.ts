@@ -35,7 +35,7 @@ constructor (
             this.ngRedux.dispatch({
                 type: UsersActions.STOP_SPINNER
             } as any )
-            this.router.navigateByUrl('/my-bookings');
+            this.router.navigateByUrl('/portal/my-bookings');
         }, error =>{
             this.ngRedux.dispatch({
                 type: UsersActions.FAILURE,

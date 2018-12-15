@@ -95,11 +95,6 @@ constructor (
                 type: UsersActions.DELETE_USER,
                 payload: userId
             } as any )
-            this.ngRedux.dispatch({
-                type: LoginActions.LOGOUT
-            } as any )
-            this.router.navigateByUrl('/');
-            
         }, error =>{
             this.ngRedux.dispatch({
                 type: UsersActions.FAILURE,

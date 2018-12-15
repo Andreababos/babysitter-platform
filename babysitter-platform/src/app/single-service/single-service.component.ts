@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { User, Sitter, Parent } from '../entities/user';
 import { Baby } from '../entities/baby';
 import { UsersService } from '../services/users.service';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../redux/store';
 
 @Component({
   selector: 'app-single-service',
@@ -20,26 +22,17 @@ export class SingleServiceComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private usersService: UsersService
-
+    private usersService: UsersService,
+    private ngRedux: NgRedux<IAppState>
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = (params['id']);
-      this.loadUser();
+      this.ngRedux.select(res => res.users).subscribe((data) => {
+        this.user = data.users.filter(user => user._id === this.id)[0];
+      })
     })
-  }
-
-
-  /* 
-  TODO:
-  Do this with redux
-  */
-  public loadUser(){
-    this.usersService.getUsers().subscribe( (data: any) => {
-        this.user = data.filter(user => user._id === this.id)[0]
-  });
   }
 
 }

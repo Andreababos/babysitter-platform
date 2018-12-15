@@ -42,16 +42,18 @@ beforeEach(() => {
   })
 
   it('should get all users', () => {
-    //TODO: do not use the webservice
-    inject( [HttpTestingController, UsersService], (  httpMock: HttpTestingController, service: UsersService) => {
+    let users = [
+      {_id: '10', firstName: 'Per', lastName: 'Hansen', location: 'Copenhagen', role:'sitter', email:'per@mail.com', password:'password', filter:'andrea'},
+      {_id: '11', firstName: 'Jens', lastName: 'Hansen', location: 'Copenhagen', role:'sitter', email:'jens@mail.com', password:'password', filter:'andrea'},
+      {_id: '12', firstName: 'Helle', lastName: 'Hansen', location: 'Helsingor', role:'sitter', email:'helle@mail.com', password:'password', filter:'andrea'},
+      {_id: '13', firstName: 'Jørgen', lastName: 'Hansen', location: 'Farum', role:'sitter', email:'jorgern@mail.com', password:'password', filter:'andrea'},
+      {_id: '14', firstName: 'Berit', lastName: 'Hansen', location: 'Valby', role:'sitter', email:'berit@mail.com', password:'password', filter:'andrea'},     
+    ];
     let state = UsersState.getEmptyState()
     deepFreeze(state);
-    service.getUsers().subscribe( (result: any) =>{
-        let afterState = UsersReducer(state, {type: types.UsersActions.GET_USERS, payload: result})
-        let expectedState = {users: result, errorMessage: '', loading: false}
+        let afterState = UsersReducer(state, {type: types.UsersActions.GET_USERS, payload: users})
+        let expectedState = {users: users, errorMessage: '', loading: false}
         expect(afterState).toEqual(expectedState)
-    })
-    })
   })
 
   it('should add new user', () => {

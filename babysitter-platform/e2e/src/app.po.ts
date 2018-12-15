@@ -5,10 +5,10 @@ export class AppPage {
     return browser.get('/');
   }
 
-  login() {
-    //browser.get('login');
-    element(by.name('email')).sendKeys("fred@gmail.com");
-    element(by.name('password')).sendKeys("password");
+  login(email, password) {
+    browser.get('/home/login');
+    element(by.name('email')).sendKeys(email);
+    element(by.name('password')).sendKeys(password);
     element(by.id('btnLogin')).click();
   }
 

@@ -44,5 +44,4 @@ export class ServiceBookingsComponent implements OnInit {
       }
     })
   }
-
 }

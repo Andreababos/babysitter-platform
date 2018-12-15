@@ -5,6 +5,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../redux/store';
 import { UsersActions } from '../redux/users/users.actions';
+import { LoginActions } from '../redux/login/login.actions';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,7 +23,8 @@ export class UserProfileComponent implements OnInit {
     private usersService: UsersService,
     private ngRedux: NgRedux<IAppState>,
     private fb: FormBuilder,
-    private usersActions: UsersActions
+    private usersActions: UsersActions,
+    private loginActions: LoginActions
   ) { }
 
   ngOnInit() {
@@ -67,5 +69,6 @@ export class UserProfileComponent implements OnInit {
 
   public deleteMe(){
     this.usersActions.deleteUser(this.userId);
+    this.loginActions.logout();
   }
 }
